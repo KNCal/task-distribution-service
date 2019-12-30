@@ -1,0 +1,33 @@
+{
+  "agents" :
+  [
+    {
+      "agentID": "1",
+      "skills": ["1"]
+    },
+    {
+      "agentID": "2",
+      "skills": ["2"]
+    },
+    {
+      "agentID": "3",
+      "skills": ["3"]
+    },
+    {
+      "agentID": "12",
+      "skills": ["1", "2"]
+    },
+    {
+      "agentID": "13",
+      "skills": ["1","3"]
+    },
+    {
+      "agentID": "23",
+      "skills": ["2","3"]
+    },
+    {
+      "agentID": "123",
+      "skills": ["1","2","3"]
+    }
+  ]
+}
