@@ -39,20 +39,7 @@ Requirements: MongoDB, Go compiler and JS compiler
         $ npm install  (this installs the app's dependencies)
         $ npm start
 
-Note:
-    At the moment, when you start the server ($go run main.go) the first time, it will create a collection in the "test" database. 
-
-    As a work around, for subsequent starts the server, comment out the following lines in main.go:
-
-        - "./setupdb"
-        - setupdb.SetUpTable()
-
-    before starting the server again.
-
-    If you accidentally start the server more than once without commenting, use Robomongo or Mongo shell to drop the table and start again. 
-
 Future Additions:
-    - Put in a check if collection exists before creating it.
     - Create microservices using Docker or client, server and MongoDB.
     - Include test cases and how to run them.
 

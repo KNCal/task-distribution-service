@@ -11,6 +11,7 @@ import (
 
 	"../models"
 
+	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
@@ -42,14 +43,15 @@ type Agent struct {
 func SetUpTable() {
 	clientOptions := options.Client().ApplyURI(connectionString)
 
+	ctx := context.Background()
 	// connect to MongoDB
-	client, err := mongo.Connect(context.TODO(), clientOptions)
+	client, err := mongo.Connect(ctx, clientOptions)
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	// Check connection
-	err = client.Ping(context.TODO(), nil)
+	err = client.Ping(ctx, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -74,16 +76,28 @@ func SetUpTable() {
 		panic(error)
 	}
 
+	// Get assignment records
 	var assignment models.Assignment
-	for i := 0; i < len(agents.Agents); i++ {
-		var result models.Assignment
-		assignment.AgentID = agents.Agents[i].AgentID
-		assignment.TaskID = ""
-		assignment.TaskPriority = ""
-		assignment.Busy = false
-		assignment.TimeAssigned = time.Time{}
-		insertOneAssign(assignment)
-		fmt.Printf("Found a single document: %+v\n", result)
+	count, err1 := collectionAgentAssignList.CountDocuments(ctx, bson.M{"agentid": "1"})
+	if err1 != nil {
+		log.Fatal(err)
+	}
+	if count == 0 {
+		for i := 0; i < len(agents.Agents); i++ {
+			assignment.AgentID = agents.Agents[i].AgentID
+			assignment.TaskID = ""
+			assignment.TaskPriority = ""
+			assignment.Busy = false
+			assignment.TimeAssigned = time.Time{}
+			insertOneAssign(assignment)
+		}
+	}
+
+	err2 := client.Disconnect(ctx)
+	if err2 != nil {
+		log.Fatal(err)
+	} else {
+		fmt.Println("Connection to MongoDB closed.")
 	}
 }
 
