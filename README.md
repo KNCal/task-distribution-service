@@ -1,4 +1,3 @@
-
 ## An Example of a Task Distrubtion Service
 
 This is an example of a work distribution service. It receives a task with the skill(s) required by it, an agent can be assigned to it based on the following conditions:
@@ -38,6 +37,8 @@ Requirements: MongoDB, Go compiler and JS compiler
         $ cd client
         $ npm install  (this installs the app's dependencies)
         $ npm start
+        
+    4. On the browser, enter: localhost:3000 in the url to bring up page.
 
 Future Additions:
     - Create microservices using Docker or client, server and MongoDB.
