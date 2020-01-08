@@ -1,4 +1,4 @@
-## An Example of a Task Distrubtion Service
+## An Example of a Task Distribution Service
 
 This is an example of a work distribution service. It receives a task with the skill(s) required by it, an agent can be assigned to it based on the following conditions:
 
