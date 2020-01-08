@@ -39,6 +39,7 @@ Requirements: MongoDB, Go compiler and JS compiler
         $ npm start
         
     4. On the browser, enter: localhost:3000 in the url to bring up page.
+    5. Use mongo shell or Robomongo to verify updates to the database 'test'
 
 Future Additions:
     - Create microservices using Docker or client, server and MongoDB.
