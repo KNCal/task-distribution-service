@@ -6,11 +6,11 @@ import (
 	"net/http"
 
 	"./router"
-	// "./setupdb"
+	"./setupdb"
 )
 
 func main() {
-	// setupdb.SetUpTable()
+	setupdb.SetUpTable()
 	r := router.Router()
 	fmt.Println("Starting server on the port 8080...")
 
